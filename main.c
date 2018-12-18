@@ -1,6 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <caesar.h>
+#ifdef __TRUSTINSOFT_ANALYZER__
+#include <tis_builtin.h>
+#endif
 
 void gen_test(char *str, int str_len, int shift)
 {
@@ -31,6 +34,13 @@ int main(void)
     gen_test(orig_str, str_len, -3);
     printf("\nTest 2: Shift with a positive input\n");
     gen_test(orig_str, str_len, 7);
+
+#ifdef __TRUSTINSOFT_ANALYZER__
+    printf("\nTest 3: Shift with all possible input\n");
+    int shift;
+    tis_make_unknown(&shift, sizeof shift);
+    gen_test(orig_str, str_len, shift);
+#endif
 
     return 0;
 }
