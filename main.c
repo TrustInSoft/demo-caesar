@@ -41,6 +41,10 @@ int main(void)
     int shift;
     shift = tis_interval(-INT_MAX, INT_MAX);
     gen_test(orig_str, str_len, shift);
+
+    printf("\nTest 4: All possible input\n");
+    tis_make_unknown(orig_str, str_len - 1);
+    gen_test(orig_str, str_len, shift);
 #endif
 
     return 0;
