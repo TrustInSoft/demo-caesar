@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <limits.h>
 
 #define NB_LTR ('z' - 'a' + 1)
 
@@ -9,6 +10,7 @@ void check_magic_number(void)
     int i = 0 << (int)c;
 }
 
+/*@ requires INT_MIN < x <= INT_MAX; */
 int absolute_int(int x)
 {
     int abs_x;
@@ -28,9 +30,9 @@ char *caesar_encrypt(char *str, int str_len, int shift)
     if (buf) {
         while (*str) {
             if (*str >= 'a' && *str <= 'z')
-                buf[i] = (*str + abs_shift - 'a') % NB_LTR + 'a';
+                buf[i] = (*str + abs_shift % NB_LTR - 'a') % NB_LTR + 'a';
             else if (*str >= 'A' && *str <= 'Z')
-                buf[i] = (*str + abs_shift - 'A') % NB_LTR + 'A';
+                buf[i] = (*str + abs_shift % NB_LTR - 'A') % NB_LTR + 'A';
             else
                 /* Spaces and other characters are not encrypted. */
                 buf[i] = *str;
@@ -51,9 +53,9 @@ char *caesar_decrypt(char *str, int str_len, int shift)
     if (buf) {
         while (*str) {
             if (*str >= 'a' && *str <= 'z')
-                buf[i] = (*str + (NB_LTR - abs_shift) - 'a') % NB_LTR + 'a';
+                buf[i] = (*str + (NB_LTR - abs_shift % NB_LTR) - 'a') % NB_LTR + 'a';
             else if (*str >= 'A' && *str <= 'Z')
-                buf[i] = (*str + (NB_LTR - abs_shift) - 'A') % NB_LTR + 'A';
+                buf[i] = (*str + (NB_LTR - abs_shift % NB_LTR) - 'A') % NB_LTR + 'A';
             else
                 /* Spaces and other characters are not encrypted. */
                 buf[i] = *str;

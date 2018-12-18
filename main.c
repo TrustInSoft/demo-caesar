@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <caesar.h>
 #ifdef __TRUSTINSOFT_ANALYZER__
+#include <limits.h>
 #include <tis_builtin.h>
 #endif
 
@@ -38,7 +39,7 @@ int main(void)
 #ifdef __TRUSTINSOFT_ANALYZER__
     printf("\nTest 3: Shift with all possible input\n");
     int shift;
-    tis_make_unknown(&shift, sizeof shift);
+    shift = tis_interval(-INT_MAX, INT_MAX);
     gen_test(orig_str, str_len, shift);
 #endif
 
