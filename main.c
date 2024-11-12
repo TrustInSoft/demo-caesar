@@ -22,9 +22,12 @@ int main(void)
     unsigned long str_len = sizeof orig_str;
 
     printf("Test 1: Shift with a negative input\n");
-    gen_test(orig_str, str_len, -3);
-
     int shift = tis_interval(INT_MIN+1, INT_MAX);
+    gen_test(orig_str, str_len, shift);
+
+    for(int i = 0; i < str_len - 1; i++)  // Keep the string null terminated.
+      orig_str[i] = tis_interval(1, CHAR_MAX); // Don't introduce null character in the middle.
+
     gen_test(orig_str, str_len, shift);
 
     return 0;
