@@ -1,5 +1,7 @@
 #include <stdlib.h>
 
+#define ASSERT(x) (1/(x))
+
 #define NB_LTR ('z' - 'a' + 1)
 
 void check_magic_number(void)
@@ -19,6 +21,29 @@ int absolute_int(int x)
     return abs_x;
 }
 
+// Fills out parameter 'a' and 'z' if c is a lower case letter,
+// 'A' and 'Z' if c is an upper case letter,
+// 'A' and 'Z' if c is an upper case letter,
+// return 0 if c is not a letter.
+int alphabet_limits(char c, char* a, char* z) {
+  int ret;
+  if (c >= 'a' && c <= 'z') {
+    *a = 'a';
+    *z = 'z';
+    ret = 1;
+  } else if (c >= 'A' && c <= 'Z') {
+    *a = 'A';
+    *z = 'Z';
+    ret = 1;
+  } else {
+    *a = *z = 0;
+    ret = 0;
+  }
+
+  ASSERT(*a <= *z);
+  return ret;
+}
+
 char *caesar_encrypt(char *str, unsigned long str_len, int shift)
 {
     int abs_shift = absolute_int(shift);
@@ -28,8 +53,11 @@ char *caesar_encrypt(char *str, unsigned long str_len, int shift)
       exit(1);
 
     while (*str) {
-        if (*str >= 'a' && *str <= 'z')
-            buf[i] = (*str + abs_shift % NB_LTR - 'a') + 'a';
+        char a, z;
+        int is_alphabetical = alphabet_limits(*str, &a, &z);
+        ASSERT(a <= z);
+        if (is_alphabetical)
+            buf[i] = (*str + abs_shift % NB_LTR - a) + a;
         else if (*str >= 'A' && *str <= 'Z')
             buf[i] = (*str + abs_shift % NB_LTR - 'A') + 'A';
         else
