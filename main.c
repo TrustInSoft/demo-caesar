@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include "caesar.h"
 
+#include <tis_builtin.h>
+
 void gen_test(char *str, size_t str_len, int shift)
 {
     char *res1, *res2;
@@ -20,6 +22,10 @@ int main(void)
 
     printf("Test 1: Shift with a negative input\n");
     gen_test(orig_str, str_len, -3);
+
+    int shift;
+    tis_make_unknown(&shift, sizeof(shift));
+    gen_test(orig_str, str_len, shift);
 
     return 0;
 }
