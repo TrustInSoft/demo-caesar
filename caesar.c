@@ -15,6 +15,7 @@ int absolute_int(int x)
 char *caesar_encrypt(char *str, unsigned long str_len, int shift)
 {
     int abs_shift = absolute_int(shift);
+    abs_shift %= NB_LTR;
     int i = 0;
     char *buf = (char *)malloc(str_len);
     if(!buf)
@@ -38,6 +39,7 @@ char *caesar_encrypt(char *str, unsigned long str_len, int shift)
 char *caesar_decrypt(char *str, unsigned long str_len, int shift)
 {
     int abs_shift = absolute_int(shift);
+    abs_shift %= NB_LTR;
     int i = 0;
     char *buf = (char *)malloc(str_len);
     if(!buf)

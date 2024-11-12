@@ -1,3 +1,4 @@
+#include <limits.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include "caesar.h"
@@ -23,8 +24,7 @@ int main(void)
     printf("Test 1: Shift with a negative input\n");
     gen_test(orig_str, str_len, -3);
 
-    int shift;
-    tis_make_unknown(&shift, sizeof(shift));
+    int shift = tis_interval(INT_MIN+1, INT_MAX);
     gen_test(orig_str, str_len, shift);
 
     return 0;
