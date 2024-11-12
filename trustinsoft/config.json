@@ -1,0 +1,14 @@
+{
+  "prefix_path": "..",
+  "val": true,
+  "name": "caesar",
+  "files": [
+    "caesar.c",
+    "main.c"
+  ],
+  "whole-program-graph": true,
+  "slevel-function": {
+    "caesar_encrypt": 100,
+    "caesar_decrypt": 100
+  }
+}
