@@ -1,18 +1,24 @@
 {
   "common": {
+    "files": [
+      "caesar.c",
+      "main.c"
+    ],
     "prefix_path": "..",
     "val": true,
-    "slevel": 100
+    "slevel": 100,
+    "val-split-return-function": {
+      "alphabet_limits": "full"
+    },
+    "whole-program-graph": true
   },
   "analyses": [
     {
-      "name": "caesar",
-      "files": [
-        "caesar.c",
-        "main.c"
-      ],
-      "whole-program-graph": true,
-      "slevel": 100
+      "name": "Caesar full"
+    },
+    {
+      "name": "Decrypt only",
+      "main": "caesar_decrypt"
     }
   ]
 }
