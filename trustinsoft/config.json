@@ -1,0 +1,18 @@
+{
+  "common": {
+    "prefix_path": "..",
+    "val": true,
+    "slevel": 100
+  },
+  "analyses": [
+    {
+      "name": "caesar",
+      "files": [
+        "caesar.c",
+        "main.c"
+      ],
+      "whole-program-graph": true,
+      "slevel": 100
+    }
+  ]
+}
