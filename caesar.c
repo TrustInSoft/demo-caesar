@@ -17,6 +17,8 @@ char *caesar_encrypt(char *str, unsigned long str_len, int shift)
     int abs_shift = absolute_int(shift);
     int i = 0;
     char *buf = (char *)malloc(str_len);
+    if(!buf)
+      exit(1);
 
     while (*str) {
         if (*str >= 'a' && *str <= 'z')
@@ -38,6 +40,8 @@ char *caesar_decrypt(char *str, unsigned long str_len, int shift)
     int abs_shift = absolute_int(shift);
     int i = 0;
     char *buf = (char *)malloc(str_len);
+    if(!buf)
+      exit(1);
 
     while (*str) {
         if (*str >= 'a' && *str <= 'z')
