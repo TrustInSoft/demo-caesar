@@ -29,9 +29,9 @@ char *caesar_encrypt(char *str, unsigned long str_len, int shift)
 
     while (*str) {
         if (*str >= 'a' && *str <= 'z')
-            buf[i] = (*str + abs_shift - 'a') % NB_LTR + 'a';
+            buf[i] = (*str + abs_shift % NB_LTR - 'a') + 'a';
         else if (*str >= 'A' && *str <= 'Z')
-            buf[i] = (*str + abs_shift - 'A') % NB_LTR + 'A';
+            buf[i] = (*str + abs_shift % NB_LTR - 'A') + 'A';
         else
             /* Spaces and other characters are not encrypted. */
             buf[i] = *str;
