@@ -14,11 +14,13 @@ tutorial. The purpose of this tutorial is to successively perform:
 For the purpose of the tutorial, each verification step is marked with
 a git tag. This allows to easily follow the verification methodology.
 
-- Tag `STEP_0`: Verification of the test suite
-- Tag `STEP_1`: Fixes of the test suite
-- Tag `STEP_2`: Verification of the generalized test suite
-- Tag `STEP_3`: Fixes of the generalized test suite
-- Tag `STEP_4`: Exhaustive verification
+- Tag `STEP_1`: Initial state
+- Tag `STEP_2`: Fix the first alarms.
+- Tag `STEP_3`: First input generalization.
+- Tag `STEP_4`: Fix alarms found by generalization.
+- Tag `STEP_5`: Second input generalization.
+- Tag `STEP_6`: Alarm introduced by refactoring.
+- Tag `STEP_7`: Split an analysis in a campaign of analyses.
 
 ## Caesar Cipher
 
