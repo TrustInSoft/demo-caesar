@@ -18,8 +18,8 @@ a git tag. This allows to easily follow the verification methodology.
 - Tag `STEP_2`: Fix the first alarms.
 - Tag `STEP_3`: First input generalization.
 - Tag `STEP_4`: Fix alarms found by generalization.
-- Tag `STEP_5`: Second input generalization.
-- Tag `STEP_6`: Alarm introduced by refactoring.
+- Tag `STEP_5`: Alarm introduced by refactoring.
+- Tag `STEP_6`: Second input generalization.
 - Tag `STEP_7`: Split an analysis in a campaign of analyses.
 
 ## Caesar Cipher
