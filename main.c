@@ -44,6 +44,8 @@ int caesar_only_decrypt(void)
     for(int i = 0; i < str_len - 1; i++)  // Keep the string null terminated.
       orig_str[i] = tis_interval(1, CHAR_MAX); // Don't introduce null character in the middle.
 
+    orig_str[str_len-1] = 0;
+
     caesar_decrypt(orig_str, str_len, shift);
     return 0;
 }
