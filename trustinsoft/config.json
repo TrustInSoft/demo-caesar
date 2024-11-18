@@ -18,7 +18,7 @@
     },
     {
       "name": "Decrypt only",
-      "main": "caesar_decrypt"
+      "main": "caesar_only_decrypt"
     }
   ]
 }

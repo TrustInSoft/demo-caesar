@@ -34,9 +34,9 @@ int main(void)
 }
 
 
-int caear_only_decrypt(void)
+int caesar_only_decrypt(void)
 {
-    char orig_str[14];
+    char orig_str[14] = {};
     unsigned long str_len = sizeof orig_str;
 
     int shift = tis_interval(INT_MIN+1, INT_MAX);
@@ -45,4 +45,5 @@ int caear_only_decrypt(void)
       orig_str[i] = tis_interval(1, CHAR_MAX); // Don't introduce null character in the middle.
 
     caesar_decrypt(orig_str, str_len, shift);
+    return 0;
 }
