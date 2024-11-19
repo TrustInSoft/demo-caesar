@@ -14,7 +14,8 @@
   },
   "analyses": [
     {
-      "name": "Caesar full"
+      "name": "caesar",
+      "main": "main"
     },
     {
       "name": "Decrypt only",
