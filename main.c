@@ -27,5 +27,9 @@ int main(void)
     int shift = tis_interval(INT_MIN+1, INT_MAX);
     gen_test(orig_str, str_len, shift);
 
+    char c;
+    tis_make_unknown(&c, sizeof c);
+    get_a(c);
+
     return 0;
 }

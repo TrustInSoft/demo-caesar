@@ -1,5 +1,7 @@
 #include <stdlib.h>
 
+#define ASSERT(x) if (!(x)) 1/0
+
 #define NB_LTR ('z' - 'a' + 1)
 
 int absolute_int(int x)
@@ -10,6 +12,24 @@ int absolute_int(int x)
     else
         abs_x = x;
     return abs_x;
+}
+
+// Return 'A', 'a', or 0
+char get_a(char c)
+{
+    char a;
+
+    if ('A' <= c && c <= 'Z')
+        a = 'A';
+    else if ('a' <= c && c <= 'z')
+        a = 'a';
+    else
+        return 0;
+
+    // check that c - a ∈ [0..NB_LTR-1]
+    ASSERT(0 <= c - a);
+    ASSERT(c - a < NB_LTR);
+    return a;
 }
 
 char *caesar_encrypt(char *str, unsigned long str_len, int shift)
