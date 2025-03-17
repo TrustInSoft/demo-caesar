@@ -1,6 +1,7 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "caesar.h"
 
 #include <tis_builtin.h>
@@ -30,6 +31,9 @@ int main(void)
     char c;
     tis_make_unknown(&c, sizeof c);
     get_a(c);
+
+    memset(orig_str, tis_char_interval(1, SCHAR_MAX), str_len - 1);
+    gen_test(orig_str, str_len, shift);
 
     return 0;
 }

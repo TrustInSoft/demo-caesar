@@ -42,10 +42,14 @@ char *caesar_encrypt(char *str, unsigned long str_len, int shift)
       exit(1);
 
     while (*str) {
-        if (*str >= 'a' && *str <= 'z')
-            buf[i] = (*str + abs_shift - 'a') % NB_LTR + 'a';
-        else if (*str >= 'A' && *str <= 'Z')
-            buf[i] = (*str + abs_shift - 'A') % NB_LTR + 'A';
+        char a = get_a(*str);
+        if (a) {
+            // check that *str - a ∈ [0..NB_LTR-1]
+            ASSERT(0 <= *str - a);
+            ASSERT(*str - a < NB_LTR);
+
+            buf[i] = (*str + abs_shift - a) % NB_LTR + a;
+        }
         else
             /* Spaces and other characters are not encrypted. */
             buf[i] = *str;
@@ -66,10 +70,14 @@ char *caesar_decrypt(char *str, unsigned long str_len, int shift)
       exit(1);
 
     while (*str) {
-        if (*str >= 'a' && *str <= 'z')
-            buf[i] = (*str + (NB_LTR - abs_shift) - 'a') % NB_LTR + 'a';
-        else if (*str >= 'A' && *str <= 'Z')
-            buf[i] = (*str + (NB_LTR - abs_shift) - 'A') % NB_LTR + 'A';
+        char a = get_a(*str);
+        if (a) {
+            // check that *str - a ∈ [0..NB_LTR-1]
+            ASSERT(0 <= *str - a);
+            ASSERT(*str - a < NB_LTR);
+
+            buf[i] = (*str + (NB_LTR - abs_shift) - a) % NB_LTR + a;
+        }
         else
             /* Spaces and other characters are not encrypted. */
             buf[i] = *str;
