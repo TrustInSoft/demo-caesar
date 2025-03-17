@@ -12,6 +12,25 @@ int absolute_int(int x)
     return abs_x;
 }
 
+int upper[NB_LTR] = {0};
+int lower[NB_LTR] = {0};
+void count(char c)
+{
+    size_t offset;
+    int *upper_or_lower = NULL;
+
+    if ('A' <= c && c <= 'Z') {
+        offset = c - 'A';
+        upper_or_lower = &upper[0];
+    } else if ('a' <= c && c <= 'z') {
+        offset = c - 'a';
+        upper_or_lower = &lower[0];
+    }
+
+    if (upper_or_lower != NULL)
+        upper_or_lower[offset]++;
+}
+
 char *caesar_encrypt(char *str, unsigned long str_len, int shift)
 {
     int abs_shift = absolute_int(shift);
