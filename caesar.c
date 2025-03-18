@@ -2,6 +2,12 @@
 
 #define ASSERT(x) if (!(x)) 1/0
 
+#ifdef DEBUG
+# define LOG(x) printf("%c\n", x)
+#else
+# define LOG(x) while(0) // noop
+#endif
+
 #define NB_LTR ('z' - 'a' + 1)
 
 int absolute_int(int x)
@@ -26,6 +32,7 @@ char get_a(char c)
     else
         return 0;
 
+    LOG(*str);
     // check that c - a ∈ [0..NB_LTR-1]
     ASSERT(0 <= c - a);
     ASSERT(c - a < NB_LTR);
