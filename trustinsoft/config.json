@@ -14,5 +14,8 @@
   },
   "val-split-return-function": {
     "get_a": "full"
-  }
+  },
+  "val-slevel-merge-after-loop": [
+    "-get_a"
+  ]
 }
