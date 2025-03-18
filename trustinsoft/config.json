@@ -11,5 +11,8 @@
     "caesar_encrypt": 100,
     "caesar_decrypt": 100,
     "get_a": 10
+  },
+  "val-split-return-function": {
+    "get_a": "full"
   }
 }
